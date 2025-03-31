@@ -1,7 +1,7 @@
 package main
 
-import "fmt"
+import "learning_go/exercises/ch2"
 
 func main() {
-	fmt.Println("This is cool!")
+	exercises.FunWithOverflow()
 }
