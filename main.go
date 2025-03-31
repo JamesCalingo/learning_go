@@ -5,5 +5,5 @@ import "learning_go/exercises"
 
 
 func main() {
-	exercises.Ch4()
+	exercises.Ch5()
 }
