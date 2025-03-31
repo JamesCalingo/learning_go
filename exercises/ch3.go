@@ -15,7 +15,7 @@ func funWithEmojis() {
 	message := "Hi 👧 and 👨"
 	fourth := message[3]
 	fmt.Println(string(fourth))
-	//This one is meant to show that the emojis are "secretly" strings
+	//This one is meant to show that the emojis are "secretly" Unicode strings
 }
 
 func employeeList() {
