@@ -1,7 +1,9 @@
 package main
 
-import "learning_go/exercises/ch2"
+import "learning_go/exercises"
+
+
 
 func main() {
-	exercises.FunWithOverflow()
+	exercises.Ch3()
 }

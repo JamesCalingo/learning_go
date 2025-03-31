@@ -2,14 +2,14 @@ package exercises
 
 import "fmt"
 
-func PrintIAndF1() {
+func printIAndF1() {
 	var i int = 20
 	var f float32 = float32(i)
 	fmt.Println(i, f)
 	//We get 20 and 20 (Well, technically the second one is 20.0, but the trailing decimals are left off for some reason)
 }
 
-func PrintIAndF2() {
+func printIAndF2() {
 	const value = 20
 	var i int = value
 	var f float32 = value
@@ -17,7 +17,7 @@ func PrintIAndF2() {
 	//Just like the last exercise, we get 20 and 20.0 shortened to 20
 }
 
-func FunWithOverflow() {
+func funWithOverflow() {
 	var b byte = 255
 	var smallI int32 = 2147483647
 	var bigI uint64 = 18446744073709551615
@@ -33,4 +33,10 @@ func FunWithOverflow() {
 	
 	(P.S.: There's also underflow, which is basically the same concept but going the other way)
 	*/
+}
+
+func Ch2() {
+	printIAndF1()
+	printIAndF2()
+	funWithOverflow()
 }
