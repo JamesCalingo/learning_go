@@ -79,7 +79,7 @@ func theApproximatePopulationOfNewJersey() {
 	fmt.Println(len(population))
 	fmt.Println("DONE")
 }
-// New Jersey's population, as of a 2024 estimate, was around 9.5 million 
+// New Jersey's population, as of a 2024 estimate, was around 9.5 million. Also, don't give functions names like this kids...
 
 func Ch6() {
 	steve := makePerson("Steve", "Steeeeeeeeve", 69)
@@ -92,4 +92,5 @@ func Ch6() {
 	fmt.Println(strings)
 	GrowSlice(strings, "Grown four.")
 	fmt.Println(strings)
+	theApproximatePopulationOfNewJersey()
 }
