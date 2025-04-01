@@ -2,6 +2,7 @@ package exercises
 
 import "fmt"
 
+//EXERCISE 1: types
 func printIAndF1() {
 	var i int = 20
 	var f float32 = float32(i)
@@ -9,6 +10,7 @@ func printIAndF1() {
 	//We get 20 and 20 (Well, technically the second one is 20.0, but the trailing decimals are left off for some reason)
 }
 
+//EXERCISE 2: const
 func printIAndF2() {
 	const value = 20
 	var i int = value
@@ -17,6 +19,7 @@ func printIAndF2() {
 	//Just like the last exercise, we get 20 and 20.0 shortened to 20
 }
 
+//EXERCISE 3: overflow
 func funWithOverflow() {
 	var b byte = 255
 	var smallI int32 = 2147483647

@@ -2,6 +2,7 @@ package exercises
 
 import "fmt"
 
+//EXERCISE 1: creating slices
 func greetings() {
 	greetings := []string{"Hello,", "Hola,", "Arabic I believe,", "Konnichiwa,", "I think this is Cyrillic,"}
 	sub1 := greetings[:2]
@@ -11,6 +12,7 @@ func greetings() {
 	//NOTE: The book uses various greetings in different , but that ends up being ultimately unimportant to this exercise. Also, I added commas to the greetings as it makes them a lot more readable when you print them.
 }
 
+//EXERCISE 2: strings
 func funWithEmojis() {
 	message := "Hi 👧 and 👨"
 	fourth := message[3]
@@ -18,6 +20,7 @@ func funWithEmojis() {
 	//This one is meant to show that the emojis are "secretly" Unicode strings
 }
 
+//EXERCISE 3: structs
 func employeeList() {
 	type Employee struct {
 		firstName string

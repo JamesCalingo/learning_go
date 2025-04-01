@@ -5,6 +5,7 @@ import (
 	"math/rand"
 )
 
+//EXERCISE 1: generating 100 ints
 func oneHundredInts() []int {
 	var ints []int
 	for i := 0; i < 100; i++ {
@@ -13,6 +14,7 @@ func oneHundredInts() []int {
 	return ints
 }
 
+//EXERCISE 2: looping over the ints
 func rules(ints []int) []string {
 	var result []string
 	for _, value := range ints {
@@ -30,6 +32,7 @@ func rules(ints []int) []string {
 	return result
 }
 
+//EXERCISE 3: runningSum and the dangers of shadowing
 func runningSum() int {
 	var total int
 	for i := 0; i < 10; i++ {
