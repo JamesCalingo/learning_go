@@ -62,7 +62,7 @@ func GrowSlice(strings []string, update string) {
 	strings = append(strings, update)
 	fmt.Println(strings)
 }
-//This adds the new value to strings
+//This adds the new value to the slice
 
 /* What ends up happening here is rather interesting: if run in the order they're written (update then grow), then the slice we use for this gets changed by update and then THAT slice gets grown. However, as written (i.e. no return values), said growth is only local to the GrowSlice function - if we were to print strings one final time after running GrowSlice, we would only see the result of UpdateSlice!
 
@@ -70,6 +70,7 @@ This can also be seen if we were to reverse the order of the functions, as somet
 
 */
 
+//EXERCISE 3: garbage collection
 func theApproximatePopulationOfNewJersey() {
 	var population[]Person
 	dummy := Person{"Dummy", "Thicc", 2}
