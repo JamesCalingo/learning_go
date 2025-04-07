@@ -2,8 +2,10 @@ package exercises
 
 import (
 	"fmt"
-	"strings"
+	"io"
+	"os"
 	"sort"
+	"strings"
 )
 
 // EXERCISE 1: creating the structs
@@ -41,6 +43,7 @@ func (l *League) MatchResult(t1 Team, t2 Team, p1 int, p2 int, wins map[string]i
 	}
 }
 
+//NOTE: This relies on the "sort" package from Go 1.18, which for some reason GitHub Codespaces claims to have trouble importing - this works fine though
 func (l League) Ranking() []string {
 	var arranged []kv
 	for k, v := range l.Wins{
@@ -49,12 +52,23 @@ func (l League) Ranking() []string {
 	sort.Slice(arranged, func(i, j int) bool {
 		return arranged[i].Value > arranged[j].Value
 	})
-	fmt.Println(arranged)
 	var standings []string
 	for _, team := range arranged{
 		standings = append(standings, team.key)
 	}
 	return standings
+}
+
+//EXERCISE 3: Ranker
+type Ranker interface {
+	Ranking() []string
+}
+
+func RankPrinter (r Ranker, w io.Writer) {
+	for _, value := range r.Ranking(){
+		io.WriteString(w, value)
+		w.Write([]byte("\n"))
+	}
 }
 
 func Ch7() {
@@ -80,5 +94,9 @@ func Ch7() {
 	theLeague.MatchResult(teamD, teamB, 11, 14, wins)
 	theLeague.MatchResult(teamC, teamB, 3, 0, wins)
 	theLeague.MatchResult(teamC, teamD, 3, 0, wins)
-	fmt.Println(theLeague.Ranking())
+	RankPrinter(theLeague, os.Stdout)
+	/* I feel the need to comment on this, because WHAT THE HELL IS GOING ON HERE? Why are we running RankPrinter on theLeague, and how?
+
+	The thing with interfaces is that...I should really clear this up before moving on methinks.
+	*/
 }
