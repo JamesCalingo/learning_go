@@ -37,13 +37,13 @@ func (l *League) MatchResult(t1 Team, t2 Team, p1 int, p2 int, wins map[string]i
 		return
 	}
 	if p1 > p2 {
-		wins[t1.Name] = wins[t1.Name] + 1
+		wins[t1.Name]++
 	} else {
-		wins[t2.Name] = wins[t2.Name] + 1
+		wins[t2.Name]++
 	}
 }
 
-//NOTE: This relies on the "sort" package from Go 1.18, which for some reason GitHub Codespaces claims to have trouble importing - this works fine though
+//NOTE: you'll note that this does not use a pointer unlike MatchResult - that's because we're not actually modifying theLeague; we just need its current data
 func (l League) Ranking() []string {
 	var arranged []kv
 	for k, v := range l.Wins{
@@ -94,9 +94,13 @@ func Ch7() {
 	theLeague.MatchResult(teamD, teamB, 11, 14, wins)
 	theLeague.MatchResult(teamC, teamB, 3, 0, wins)
 	theLeague.MatchResult(teamC, teamD, 3, 0, wins)
+	theLeague.MatchResult(teamA, teamC, 28, 24, wins)
+	fmt.Println(theLeague)
 	RankPrinter(theLeague, os.Stdout)
 	/* I feel the need to comment on this, because WHAT THE HELL IS GOING ON HERE? Why are we running RankPrinter on theLeague, and how?
 
-	The thing with interfaces is that...I should really clear this up before moving on methinks.
+	The thing with interfaces is that they hold METHODS and that ANYTHING THAT USES THE METHODS ON AN INTERFACE MATCHES TYPE. Since we have a "Ranking" method on our interface AND a "Ranking" method on our League struct, League meets the Ranker interface on that Ranking method and thus fits (remember, you'll get an error if the type doesn't match).
+
+	When we run RankPrinter, it uses theLeague.Ranking to execute without us having to explicitly type theLeague.Ranking. This is useful as it allows us to "reuse" this method for other sports that don't use a simple binary win-loss method for ranking participants (for example, point based standings for sports with draws/ties or things like racing).
 	*/
 }
