@@ -6,5 +6,5 @@ import (
 
 
 func main() {
-exercises.Ch7()
+exercises.Ch8()
 }
