@@ -9,7 +9,12 @@ import (
 	"strings"
 )
 
+//EXERCISE 1: Sentinel error
+var ErrInvalidID = errors.New("Invalid ID")
 
+type EmptyField struct {
+	field string
+}
 
 func Ch9() {
 	d := json.NewDecoder(strings.NewReader(data))
@@ -24,6 +29,9 @@ func Ch9() {
 		}
 		err = ValidateEmployee(emp)
 		if err != nil {
+			if errors.Is(err, ErrInvalidID) {
+				
+			}
 			fmt.Printf("record %d: %+v error: %v\n", count, emp, err)
 			continue
 		}
@@ -88,20 +96,21 @@ var (
 )
 
 func ValidateEmployee(e Employee) error {
-	if len(e.ID) == 0 {
-		return errors.New("missing ID")
-	}
-	if !validID.MatchString(e.ID) {
-		return errors.New("invalid ID")
+	var errorList []error
+	if len(e.ID) == 0 || !validID.MatchString(e.ID) {
+		errorList = append(errorList, ErrInvalidID)
 	}
 	if len(e.FirstName) == 0 {
-		return errors.New("missing FirstName")
+		errorList = append(errorList, errors.New("missing FirstName"))
 	}
 	if len(e.LastName) == 0 {
-		return errors.New("missing LastName")
+		errorList = append(errorList, errors.New("missing LastName"))
 	}
 	if len(e.Title) == 0 {
-		return errors.New("missing Title")
+		errorList = append(errorList, errors.New("missing Title"))
+	}
+	if len(errorList) != 0 {
+		return errors.New("More than one")
 	}
 	return nil
 }

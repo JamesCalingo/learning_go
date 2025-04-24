@@ -56,4 +56,5 @@ func(n Node[T]) Index()int {
 func Ch8() {
 	fmt.Println(double(3))
 	fmt.Println(double(2.1))
+	printLine(3)
 }
