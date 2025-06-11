@@ -16,6 +16,10 @@ type EmptyField struct {
 	field string
 }
 
+func (ef EmptyField) EmptyFieldError() string {
+	return ef.field + " is empty"
+}
+
 func Ch9() {
 	d := json.NewDecoder(strings.NewReader(data))
 	count := 0
